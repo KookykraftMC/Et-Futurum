@@ -28,10 +28,8 @@ public class WorldTickEventHandler {
 		if (event.side != Side.SERVER || event.phase != Phase.END || isReplacing)
 			return;
 
-		if (ticks != 60) {
-			ticks++;
-			return;
-		}
+		if (ticks++ != 60) return;
+
 
 		if (replacements == null) {
 			replacements = new HashMap<Block, Block>();
