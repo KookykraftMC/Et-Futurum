@@ -74,5 +74,7 @@ public class WorldTickEventHandler {
 			}
 		}
 		isReplacing = false;
+
+		ticks = 0;
 	}
 }
