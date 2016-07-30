@@ -1,7 +1,9 @@
 package ganymedes01.etfuturum.core.handlers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -14,18 +16,24 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.*;
 import net.minecraft.world.World;
 
 public class WorldTickEventHandler {
 
 	private static Map<Block, Block> replacements;
 	private boolean isReplacing = false;
+	private int ticks = 0;
 
 	@SubscribeEvent
 	public void tick(WorldTickEvent event) {
 		if (event.side != Side.SERVER || event.phase != Phase.END || isReplacing)
 			return;
+
+		if (ticks != 60) {
+			ticks++;
+			return;
+		}
 
 		if (replacements == null) {
 			replacements = new HashMap<Block, Block>();
@@ -44,6 +52,8 @@ public class WorldTickEventHandler {
 
 		isReplacing = true;
 		World world = event.world;
+
+
 
 		for (int i = 0; i < world.loadedTileEntityList.size(); i++) {
 			TileEntity tile = (TileEntity) world.loadedTileEntityList.get(i);
