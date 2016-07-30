@@ -1,9 +1,7 @@
 package ganymedes01.etfuturum.core.handlers;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -16,7 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.*;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class WorldTickEventHandler {
