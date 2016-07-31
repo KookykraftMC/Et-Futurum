@@ -28,7 +28,7 @@ public class WorldTickEventHandler {
 		if (event.side != Side.SERVER || event.phase != Phase.END || isReplacing)
 			return;
 
-		if (ticks++ != 60) return;
+		if (ticks++ != 180) return;
 
 
 		if (replacements == null) {
